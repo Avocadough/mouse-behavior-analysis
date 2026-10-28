@@ -1,4 +1,18 @@
-# Mouse tracking and exploratory behavior rules
+<div align="center">
+
+# Mouse Behavior Analysis
+
+**Turning mouse-tracking coordinates into reproducible movement features.**
+
+![Python](https://img.shields.io/badge/Python-3.10%2B-3776AB?logo=python&logoColor=white)
+![pandas](https://img.shields.io/badge/pandas-Tracking%20Data-150458?logo=pandas&logoColor=white)
+![Status](https://img.shields.io/badge/Status-Exploratory%20Research-5A6472)
+
+[Overview](#overview) · [How it works](#what-the-code-does) · [Run](#run-locally) · [Repository guide](#repository-guide)
+
+</div>
+
+## Overview
 
 An exploratory project using DeepLabCut tracking coordinates to inspect mouse movement. The original [notebook](model_training.ipynb) contains data cleaning, trajectory plots, manually defined movement categories, and classifier experiments. The Python module adds a small, repeatable way to apply those original threshold rules to the CSV files already in this repository.
 
