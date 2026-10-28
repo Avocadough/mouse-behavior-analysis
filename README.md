@@ -20,7 +20,7 @@ An exploratory project using DeepLabCut tracking coordinates to inspect mouse mo
 
 ## What the code does
 
-1. Reads a cleaned tracking CSV or the DeepLabCut multi-row header in `cleaned_VITE1002.csv`.
+1. Reads a cleaned tracking CSV or the DeepLabCut multi-row header in `data/cleaned_VITE1002.csv`.
 2. Computes the Euclidean change in `bodypart1` position between consecutive recorded rows.
 3. Assigns the notebook's illustrative labels: distance below 1 is `stopping`, above 10 is `exploring`, and the rest is `moving`.
 4. Starts a new segment when the frame number resets to zero, avoiding a false movement jump between recordings. Unexpected nonzero frame reversals, missing columns, and non-finite coordinates are rejected.
@@ -33,10 +33,10 @@ Python 3.10+ is recommended. Create an environment, install the small set of dep
 
 ```bash
 python -m pip install -r requirements.txt
-python -m mouse_behavior --input cleaned_BL_real.csv --output behavior_output.csv
+python -m mouse_behavior --input data/cleaned_BL_real.csv --output behavior_output.csv
 ```
 
-The output CSV contains the original columns plus `distance`, `speed`, and rule-derived `behavior`. If the input already has these three columns, the output contains freshly calculated values in their place; the input file remains unchanged. Choose a new output path: the command refuses to overwrite an existing file. You can also use `cleaned_VITE1002.csv` as input. To run the tests, install `pytest` in the same environment and run `python -m pytest -q`.
+The output CSV contains the original columns plus `distance`, `speed`, and rule-derived `behavior`. If the input already has these three columns, the output contains freshly calculated values in their place; the input file remains unchanged. Choose a new output path: the command refuses to overwrite an existing file. You can also use `data/cleaned_VITE1002.csv` as input. To run the tests, install `pytest` in the same environment and run `python -m pytest -q`.
 
 ## Repository guide
 
@@ -47,6 +47,6 @@ The output CSV contains the original columns plus `distance`, `speed`, and rule-
 | [`mouse_behavior/analysis.py`](mouse_behavior/analysis.py) | Calculate movement and the notebook's rule-based labels. |
 | [`mouse_behavior/__main__.py`](mouse_behavior/__main__.py) | Command-line interface. |
 | [`tests/`](tests/) | Threshold, frame-boundary, input and command-line checks. |
-| `cleaned*.csv` | Historical tracking data, including one file with previously calculated fields. |
+| [`data/`](data/) | Historical tracking CSVs, including one file with previously calculated fields. The CSVs were moved here from the repository root. |
 
 This is an exploratory artifact, not a validated behavioral classifier. Data provenance, permission to reuse, recording-level splits, ground-truth annotation and temporal calibration need to be established before drawing scientific conclusions.
